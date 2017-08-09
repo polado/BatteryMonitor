@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/change_theme"
+        android:title="Change App Theme">
+        <!-- "file" submenu -->
+        <menu>
+            <item
+                android:id="@+id/theme_default"
+                android:icon="@drawable/my_default"
+                android:orderInCategory="1"
+                android:title="Default" />
+            <item
+                android:id="@+id/theme_red"
+                android:icon="@drawable/red"
+                android:orderInCategory="3"
+                android:title="Red" />
+            <item
+                android:id="@+id/theme_pink"
+                android:icon="@drawable/pink"
+                android:title="Pink" />
+            <item
+                android:id="@+id/theme_purple"
+                android:icon="@drawable/purple"
+                android:title="Purple" />
+            <item
+                android:id="@+id/theme_indigo"
+                android:icon="@drawable/indigo"
+                android:title="Indigo" />
+            <item
+                android:id="@+id/theme_blue"
+                android:icon="@drawable/blue"
+                android:orderInCategory="2"
+                android:title="Blue" />
+            <item
+                android:id="@+id/theme_teal"
+                android:icon="@drawable/teal"
+                android:title="Teal" />
+            <item
+                android:id="@+id/theme_grey"
+                android:icon="@drawable/grey"
+                android:title="Grey" />
+            <item
+                android:id="@+id/theme_blue_grey"
+                android:icon="@drawable/blue_grey"
+                android:title="Blue Grey" />
+            <item
+                android:id="@+id/theme_black"
+                android:icon="@drawable/black"
+                android:title="Black" />
+            <item
+                android:id="@+id/theme_dark_blue"
+                android:icon="@drawable/dark_blue"
+                android:title="Dark Blue" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/app_bar_search"
+        android:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:showAsAction="always" />
+</menu>

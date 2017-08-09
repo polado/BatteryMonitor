@@ -1,0 +1,91 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+    <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--<item name="android:navigationBarColor">@color/colorPrimary</item>-->
+    <!--&lt;!&ndash;<item name="android:colorBackground">@color/colorGray</item>&ndash;&gt;-->
+    <!--</style>-->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary2</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark2</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="actionBarTheme">@style/AppBaseTheme.Toolbar</item>
+    </style>
+
+    <style name="AppThemeDefault" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccent2</item>
+        <item name="android:navigationBarColor">@color/colorAccent2</item>
+        <item name="android:colorBackground">@color/colorAccent2</item>
+    </style>
+
+    <!--Action bar-->
+    <style name="AppBaseTheme.Toolbar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="android:textColorPrimary">@color/colorGray</item>
+        <item name="colorControlNormal">@color/colorGray</item>
+    </style>
+
+    <style name="AppThemeRed" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentRed</item>
+        <item name="android:navigationBarColor">@color/colorAccentRed</item>
+        <item name="android:colorBackground">@color/colorAccentRed</item>
+    </style>
+
+    <style name="AppThemePink" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentPink</item>
+        <item name="android:navigationBarColor">@color/colorAccentPink</item>
+        <item name="android:colorBackground">@color/colorAccentPink</item>
+    </style>
+
+    <style name="AppThemePurple" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentPurple</item>
+        <item name="android:navigationBarColor">@color/colorAccentPurple</item>
+        <item name="android:colorBackground">@color/colorAccentPurple</item>
+    </style>
+
+    <style name="AppThemeIndigo" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentIndigo</item>
+        <item name="android:navigationBarColor">@color/colorAccentIndigo</item>
+        <item name="android:colorBackground">@color/colorAccentIndigo</item>
+    </style>
+
+    <style name="AppThemeBlue" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentBlue</item>
+        <item name="android:navigationBarColor">@color/colorAccentBlue</item>
+        <item name="android:colorBackground">@color/colorAccentBlue</item>
+    </style>
+
+    <style name="AppThemeTeal" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentTeal</item>
+        <item name="android:navigationBarColor">@color/colorAccentTeal</item>
+        <item name="android:colorBackground">@color/colorAccentTeal</item>
+    </style>
+
+    <style name="AppThemeGrey" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentGrey</item>
+        <item name="android:navigationBarColor">@color/colorAccentGrey</item>
+        <item name="android:colorBackground">@color/colorAccentGrey</item>
+    </style>
+
+    <style name="AppThemeBlueGrey" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentBlueGrey</item>
+        <item name="android:navigationBarColor">@color/colorAccentBlueGrey</item>
+        <item name="android:colorBackground">@color/colorAccentBlueGrey</item>
+    </style>
+
+    <style name="AppThemeBlack" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentBlack</item>
+        <item name="android:navigationBarColor">@color/colorAccentBlack</item>
+        <item name="android:colorBackground">@color/colorAccentBlack</item>
+    </style>
+
+    <style name="AppThemeDarkBlue" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccentDarkBlue</item>
+        <item name="android:navigationBarColor">@color/colorAccentDarkBlue</item>
+        <item name="android:colorBackground">@color/colorAccentDarkBlue</item>
+    </style>
+</resources>
