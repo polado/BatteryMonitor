@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.BatteryManager;
 import android.os.Build;
@@ -31,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     TextView tvPercentageText;
@@ -249,87 +251,176 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupCards() {
         Log.i("setup", "setup");
-
-        final CardView cardView2 = (CardView) findViewById(R.id.cardView2);
-        cardView2.setCardBackgroundColor(accentColor);
-        cardView2.post(new Runnable() {
-            @Override
-            public void run() {
-                cardView2.setVisibility(View.INVISIBLE);
-                slideToTop(cardView2);
-            }
-        });
-        final CardView cardView3 = (CardView) findViewById(R.id.cardView3);
-        cardView3.setCardBackgroundColor(accentColor);
-        cardView3.post(new Runnable() {
-            @Override
-            public void run() {
-                cardView3.setVisibility(View.INVISIBLE);
-                slideToTop(cardView3);
-            }
-        });
-
-        final CardView cardView4 = (CardView) findViewById(R.id.cardView4);
-        cardView4.setCardBackgroundColor(accentColor);
-        cardView4.post(new Runnable() {
-            @Override
-            public void run() {
-                cardView4.setVisibility(View.INVISIBLE);
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+        int orientation = getResources().getConfiguration().orientation;
+        switch (orientation) {
+            case Configuration.ORIENTATION_LANDSCAPE: {
+                final CardView cardView2 = (CardView) findViewById(R.id.cardView2);
+                cardView2.setCardBackgroundColor(accentColor);
+                cardView2.post(new Runnable() {
                     @Override
                     public void run() {
+                        cardView2.setVisibility(View.INVISIBLE);
+                        slideToTop(cardView2);
+                    }
+                });
+                final CardView cardView3 = (CardView) findViewById(R.id.cardView3);
+                cardView3.setCardBackgroundColor(accentColor);
+                cardView3.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardView3.setVisibility(View.INVISIBLE);
+                        slideToTop(cardView3);
+                    }
+                });
+
+                final CardView cardView4 = (CardView) findViewById(R.id.cardView4);
+                cardView4.setCardBackgroundColor(accentColor);
+                cardView4.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardView4.setVisibility(View.INVISIBLE);
                         slideToTop(cardView4);
+//                        final Handler handler = new Handler();
+//                        handler.postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                slideToTop(cardView4);
+//                            }
+//                        }, 200);
                     }
-                }, 200);
-            }
-        });
-        final CardView cardView5 = (CardView) findViewById(R.id.cardView5);
-        cardView5.setCardBackgroundColor(accentColor);
-        cardView5.post(new Runnable() {
-            @Override
-            public void run() {
-                cardView5.setVisibility(View.INVISIBLE);
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                });
+                final CardView cardView5 = (CardView) findViewById(R.id.cardView5);
+                cardView5.setCardBackgroundColor(accentColor);
+                cardView5.post(new Runnable() {
                     @Override
                     public void run() {
-                        slideToTop(cardView5);
+                        cardView5.setVisibility(View.INVISIBLE);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                slideToTop(cardView5);
+                            }
+                        }, 200);
                     }
-                }, 200);
-            }
-        });
+                });
 
-        final CardView cardView6 = (CardView) findViewById(R.id.cardView6);
-        cardView6.setCardBackgroundColor(accentColor);
-        cardView6.post(new Runnable() {
-            @Override
-            public void run() {
-                cardView6.setVisibility(View.INVISIBLE);
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                final CardView cardView6 = (CardView) findViewById(R.id.cardView6);
+                cardView6.setCardBackgroundColor(accentColor);
+                cardView6.post(new Runnable() {
                     @Override
                     public void run() {
-                        slideToTop(cardView6);
+                        cardView6.setVisibility(View.INVISIBLE);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                slideToTop(cardView6);
+                            }
+                        }, 200);
                     }
-                }, 400);
-            }
-        });
-        final CardView cardView7 = (CardView) findViewById(R.id.cardView7);
-        cardView7.setCardBackgroundColor(accentColor);
-        cardView7.post(new Runnable() {
-            @Override
-            public void run() {
-                cardView7.setVisibility(View.INVISIBLE);
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                });
+                final CardView cardView7 = (CardView) findViewById(R.id.cardView7);
+                cardView7.setCardBackgroundColor(accentColor);
+                cardView7.post(new Runnable() {
                     @Override
                     public void run() {
-                        slideToTop(cardView7);
+                        cardView7.setVisibility(View.INVISIBLE);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                slideToTop(cardView7);
+                            }
+                        }, 200);
                     }
-                }, 400);
+                });
+                break;
             }
-        });
+            default: {
+                final CardView cardView2 = (CardView) findViewById(R.id.cardView2);
+                cardView2.setCardBackgroundColor(accentColor);
+                cardView2.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardView2.setVisibility(View.INVISIBLE);
+                        slideToTop(cardView2);
+                    }
+                });
+                final CardView cardView3 = (CardView) findViewById(R.id.cardView3);
+                cardView3.setCardBackgroundColor(accentColor);
+                cardView3.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardView3.setVisibility(View.INVISIBLE);
+                        slideToTop(cardView3);
+                    }
+                });
+
+                final CardView cardView4 = (CardView) findViewById(R.id.cardView4);
+                cardView4.setCardBackgroundColor(accentColor);
+                cardView4.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardView4.setVisibility(View.INVISIBLE);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                slideToTop(cardView4);
+                            }
+                        }, 200);
+                    }
+                });
+                final CardView cardView5 = (CardView) findViewById(R.id.cardView5);
+                cardView5.setCardBackgroundColor(accentColor);
+                cardView5.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardView5.setVisibility(View.INVISIBLE);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                slideToTop(cardView5);
+                            }
+                        }, 200);
+                    }
+                });
+
+                final CardView cardView6 = (CardView) findViewById(R.id.cardView6);
+                cardView6.setCardBackgroundColor(accentColor);
+                cardView6.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardView6.setVisibility(View.INVISIBLE);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                slideToTop(cardView6);
+                            }
+                        }, 400);
+                    }
+                });
+                final CardView cardView7 = (CardView) findViewById(R.id.cardView7);
+                cardView7.setCardBackgroundColor(accentColor);
+                cardView7.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardView7.setVisibility(View.INVISIBLE);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                slideToTop(cardView7);
+                            }
+                        }, 400);
+                    }
+                });
+                break;
+            }
+        }
     }
 
     public static void slideToTop(View view) {
@@ -372,7 +463,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean currentChange() {
-        if (current != tCurr) {
+        if (!Objects.equals(current, tCurr)) {
             tCurr = current;
             return true;
         }
@@ -468,7 +559,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     tvVoltage.setTextColor(accentColor);
-                    tvVoltage.setText(String.valueOf((Double.valueOf(voltage) / 1000) + "V"));
+                    tvVoltage.setText(String.valueOf(((double) voltage / 1000) + "V"));
                     circularReveal(tvVoltage);
                 }
             });
@@ -488,7 +579,6 @@ public class MainActivity extends AppCompatActivity {
     void updateBatteryStatus() {
         batteryPct = level / (float) scale;
         percent = (int) (batteryPct * 100);
-
         if (health == BatteryManager.BATTERY_HEALTH_COLD)
             batteryHealth = "Cold";
         else if (health == BatteryManager.BATTERY_HEALTH_DEAD)
