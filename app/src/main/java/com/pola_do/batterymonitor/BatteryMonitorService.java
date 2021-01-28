@@ -1,5 +1,7 @@
 package com.pola_do.batterymonitor;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -7,23 +9,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.TypedArray;
 import android.os.BatteryManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v7.app.NotificationCompat;
 import android.util.Log;
-import android.util.TypedValue;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Date;
 
 import static android.app.Notification.CATEGORY_SERVICE;
 import static android.app.Notification.PRIORITY_HIGH;
@@ -36,6 +32,20 @@ public class BatteryMonitorService extends Service {
     int level, scale, status, percent, chargePlug, temperature;
     String outStatus, plug, temp;
     float batteryPct;
+    private BroadcastReceiver batteryReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent batteryStatus) {
+            level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+            scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+            status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+            chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
+            temperature = batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
+            batteryStatus.getIntExtra(BatteryManager.EXTRA_HEALTH, -1);
+
+            updateBatteryStatus();
+        }
+    };
 
     @Nullable
     @Override
@@ -69,7 +79,6 @@ public class BatteryMonitorService extends Service {
             plug = "(Wireless)";
         }
 
-//        System.out.println(BatteryManager.BATTERY_STATUS_FULL);
         outStatus = "Not Charging";
         if (status == BatteryManager.BATTERY_STATUS_FULL) {
             outStatus = "Buttery is full";
@@ -80,7 +89,7 @@ public class BatteryMonitorService extends Service {
         outStatus += " " + plug;
         outStatus = outStatus.trim();
 
-        temp = "[" + ((float) temperature / 10) + Character.toString((char) 176) + "C]";
+        temp = "[" + ((float) temperature / 10) + (char) 176 + "C]";
 
         notification();
     }
@@ -95,43 +104,50 @@ public class BatteryMonitorService extends Service {
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
 
-        NotificationCompat.Builder mBuilder =
-                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                        .setContentTitle(outStatus)
-//                        .setSmallIcon(R.drawable.ic_stat_100)
-                        .setContentText(percent + "% " + temp)
-                        .setContentIntent(resultPendingIntent)
-                        .setCategory(CATEGORY_SERVICE)
-                        .setPriority(PRIORITY_HIGH)
-                        .setColor(new GetTheme(BatteryMonitorService.this).getThemeAccentColor())
-//                        .setColor(getResources().getColor(R.color.colorAccent2))
-//                        .setSubText("This is sub text")
-//                        .setStyle(new NotificationCompat.BigTextStyle()
-//                                .bigText("This text replaces the notification’s default text"))
-                        .setOngoing(true);
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        Notification.Builder builder;
 
-        mBuilder.setSmallIcon(getResources().getIdentifier("ic_stat_" + percent, "drawable", this.getPackageName()));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("000", "Battery Notifications",
+                    NotificationManager.IMPORTANCE_HIGH);
+            manager.createNotificationChannel(channel);
+            builder = new Notification.Builder(this, channel.getId());
+        } else builder = new Notification.Builder(this);
 
-        int mNotificationId = 001;
-        NotificationManager mNotifyMgr =
-                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+        builder.setContentTitle(outStatus).setContentText(percent + "% " + temp)
+                .setContentIntent(resultPendingIntent)
+                .setCategory(CATEGORY_SERVICE)
+                .setPriority(PRIORITY_HIGH)
+                .setColor(new GetTheme(BatteryMonitorService.this).getThemeAccentColor())
+                .setOngoing(true)
+                .setSmallIcon(getResources()
+                        .getIdentifier("ic_stat_" + percent, "drawable", this.getPackageName()));
+
+        Notification notification = builder.build();
+        manager.notify(1, notification);
+
+//        NotificationCompat.Builder mBuilder =
+//                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+//                        .setContentTitle(outStatus)
+////                        .setSmallIcon(R.drawable.ic_stat_100)
+//                        .setContentText(percent + "% " + temp)
+//                        .setContentIntent(resultPendingIntent)
+//                        .setCategory(CATEGORY_SERVICE)
+//                        .setPriority(PRIORITY_HIGH)
+//                        .setColor(new GetTheme(BatteryMonitorService.this).getThemeAccentColor())
+////                        .setColor(getResources().getColor(R.color.colorAccent2))
+////                        .setSubText("This is sub text")
+////                        .setStyle(new NotificationCompat.BigTextStyle()
+////                                .bigText("This text replaces the notification’s default text"))
+//                        .setOngoing(true);
+//
+//        mBuilder.setSmallIcon(getResources().getIdentifier("ic_stat_" + percent, "drawable", this.getPackageName()));
+//
+//        int mNotificationId = 1;
+//        NotificationManager mNotifyMgr =
+//                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//        mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
-
-    private BroadcastReceiver batteryReceiver = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent batteryStatus) {
-            level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-            scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-            status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
-            chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
-            temperature = batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
-            batteryStatus.getIntExtra(BatteryManager.EXTRA_HEALTH, -1);
-
-            updateBatteryStatus();
-        }
-    };
 
     private int getThemeAccentColor() {
         int accentColor;

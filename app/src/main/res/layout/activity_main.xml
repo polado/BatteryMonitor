@@ -9,61 +9,13 @@
     android:padding="5dp"
     tools:context="com.pola_do.batterymonitor.MainActivity">
 
-    <!--<Button-->
-    <!--android:id="@+id/btn_a"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="5dp"-->
-    <!--android:text="ButtonA"-->
-    <!--app:layout_constraintHorizontal_chainStyle="spread"-->
-    <!--app:layout_constraintHorizontal_weight="1"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--app:layout_constraintRight_toLeftOf="@+id/btn_b"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--<Button-->
-    <!--android:id="@+id/btn_b"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="5dp"-->
-    <!--android:text="ButtonB"-->
-    <!--app:layout_constraintHorizontal_weight="1"-->
-    <!--app:layout_constraintLeft_toRightOf="@+id/btn_a"-->
-    <!--app:layout_constraintRight_toLeftOf="@+id/btn_c"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--<Button-->
-    <!--android:id="@+id/btn_c"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="5dp"-->
-    <!--android:text="ButtonC"-->
-    <!--app:layout_constraintHorizontal_weight="1"-->
-    <!--app:layout_constraintLeft_toRightOf="@+id/btn_b"-->
-    <!--app:layout_constraintRight_toRightOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-
-    <!--<TextView-->
-    <!--android:id="@+id/percentage"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:background="@color/defaultBackground"-->
-    <!--android:gravity="center"-->
-    <!--android:text="Battery Percentage!"-->
-    <!--android:textSize="40sp"-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--app:layout_constraintRight_toRightOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent"/>-->
-
-
     <android.support.v7.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
         android:layout_marginTop="5dp"
+        app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView4"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -107,6 +59,7 @@
         android:layout_height="0dp"
         android:layout_margin="5dp"
         android:layout_marginTop="5dp"
+        app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/cardView2"
@@ -149,6 +102,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
+        app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView6"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -193,6 +147,7 @@
         android:layout_height="0dp"
         android:layout_margin="5dp"
         android:layout_marginBottom="5dp"
+        app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView7"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/cardView4"
@@ -237,6 +192,7 @@
         android:layout_height="0dp"
         android:layout_margin="5dp"
         android:layout_marginBottom="5dp"
+        app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -281,6 +237,7 @@
         android:layout_height="0dp"
         android:layout_margin="5dp"
         android:layout_marginBottom="5dp"
+        app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/cardView6"
